@@ -30,6 +30,11 @@ INSTALLED_APPS = [
 
     #localapp
     'restapp.apps.RestappConfig',
+
+    #restframework
+    'rest_framework',
+    'rest_framework_simplejwt'
+    
 ]
 
 AUTH_USER_MODEL = 'restapp.CustomUser'
@@ -113,3 +118,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+}
